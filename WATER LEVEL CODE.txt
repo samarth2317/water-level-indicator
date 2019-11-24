@@ -1,0 +1,330 @@
+RS EQU 1.O
+RW EQU 1.1
+EN EQU 1.2
+MOV P2,#11111111B 
+
+MOV P0,#11111111B 
+
+MOV A,#00000000B
+
+MAIN:MOV A,P2
+
+ACALL DINT
+
+ACALL NME
+
+ACALL DELAY
+
+ACALL DELAY
+
+ACALL DELAY
+
+CJNE A,#11110000B,LABEL1 
+
+ACALL NM5
+
+LABEL1:MOV A,P2
+
+CJNE A,#11111000B,LABEL2 
+
+ACALL NME4
+
+ACALL DELAY 
+
+LABEL2:MOV A,P2
+
+CJNE A,#11111100B,LABEL3 
+
+ACALL NAME3
+
+ACALL DELAY
+
+LABEL3:MOV A,P2
+
+CJNE A,#11111110B,LABEL4 
+
+ACALL NAME2
+
+LABEL4:MOV A,P2
+
+CJNE A,#11111111B,MAIN
+
+ACALL NAME1
+
+Display: 	MOV P0,A
+
+        	SETB P1.0
+
+        	CLR P1.1
+
+        	SETB P1.2
+
+        	ACALL DELAY
+
+	CLR P1.2
+
+	RET 
+
+CMD: 	MOV P0,A
+
+        	CLR P1.0
+
+        	CLR P1.1
+
+        	SETB P1.2
+
+        	ACALL DELAY
+
+        	
+
+DELAY:  MOV R6,#250D
+
+        	MOV R7,#250D
+
+L1   :  	DJNZ R6 , L1
+
+L2   : 	DJNZ R7 , L2
+
+        	RET
+
+
+
+DINT:	MOV A,#80H
+
+     ACALL CMD
+
+     MOV A,#0CH 
+
+     ACALL CMD
+
+     MOV A,#01H 
+
+     ACALL CMD
+
+     MOV A,#06H 
+
+     ACALL CMD
+
+     MOV A,#83H 
+
+     ACALL CMD
+
+     MOV A,#3CH 
+
+     ACALL CMD
+
+     RET
+
+NME: MOV A,#"W"
+
+       ACALL DISPLAY
+
+       MOV A,#"A"
+
+       ACALL DISPLAY
+
+       MOV A,#"T"
+
+       ACALL DISPLAY
+
+       MOV A,#"E"
+
+       ACALL DISPLAY
+
+       MOV A,#"R"
+
+       ACALL DISPLAY
+
+       MOV A,#"L"
+
+       ACALL DISPLAY
+
+       MOV A,#"E"
+
+       ACALL DISPLAY
+
+       MOV A,#"V"
+
+       ACALL DISPLAY
+
+       MOV A,#"E"
+
+       ACALL DISPLAY
+
+       MOV A,#"L"
+
+       ACALL DISPLAY
+
+       MOV A,#"I"
+
+       ACALL DISPLAY
+
+       MOV A,#"N"
+
+       ACALL DISPLAY
+
+       MOV A,#"D"
+
+       ACALL DISPLAY
+
+       MOV A,#"I"
+
+       ACALL DISPLAY
+
+       MOV A,#"C"
+
+       ACALL DISPLAY
+
+       MOV A,#"A"
+
+       ACALL DISPLAY
+
+       MOV A,#"T"
+
+       ACALL DISPLAY
+
+       MOV A,#"O"
+
+       ACALL DISPLAY
+
+       MOV A,#"R"
+
+       ACALL DISPLAY
+
+       RET         
+
+NAME1: MOV A,#"E"
+
+       ACALL DISPLAY
+
+       MOV A,#"M"
+
+       ACALL DISPLAY
+
+       MOV A,#"P"
+
+       ACALL DISPLAY
+
+       MOV A,#"T"
+
+       ACALL DISPLAY
+
+       MOV A,#"Y"
+
+       RET
+
+NAME2: MOV A,#"Q"
+
+       ACALL DISPLAY
+
+       MOV A,#"U"
+
+       ACALL DISPLAY
+
+       MOV A,#"A"
+
+       ACALL DISPLAY
+
+       MOV A,#"R"
+
+       ACALL DISPLAY
+
+       MOV A,#"T"
+
+       ACALL DISPLAY
+
+       MOV A,#"E"
+
+       ACALL DISPLAY
+
+       MOV A,#"R"
+
+       ACALL DISPLAY
+
+		RET
+
+NAME3: MOV A,#"H"
+
+       ACALL DISPLAY
+
+       MOV A,#"A"
+
+       ACALL DISPLAY
+
+       MOV A,#"L"
+
+       ACALL DISPLAY
+
+       MOV A,#"F"
+
+       ACALL DISPLAY
+
+       RET
+
+NME4: MOV A,#"T"
+
+       ACALL DISPLAY
+
+       MOV A,#"H"
+
+       ACALL DISPLAY
+
+       MOV A,#"R"
+
+       ACALL DISPLAY
+
+       MOV A,#"E"
+
+       ACALL DISPLAY
+
+       MOV A,#"E"
+
+       ACALL DISPLAY
+
+       MOV A,#"F"
+
+       ACALL DISPLAY
+
+       MOV A,#"O"
+
+       ACALL DISPLAY
+
+       MOV A,#"U"
+
+       ACALL DISPLAY
+
+       MOV A,#"R"
+
+       ACALL DISPLAY
+
+       MOV A,#"T"
+
+       ACALL DISPLAY
+
+       MOV A,#"H"
+
+       ACALL DISPLAY
+
+       RET
+
+NM5:  MOV A,#"F"
+
+       ACALL DISPLAY
+
+       MOV A,#"U"
+
+       ACALL DISPLAY
+
+       MOV A,#"L"
+
+       ACALL DISPLAY
+
+       MOV A,#"L"
+
+       ACALL DISPLAY
+
+       RET
+
+       RET
+
+	   END
